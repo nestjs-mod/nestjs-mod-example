@@ -1,0 +1,9 @@
+{
+  "apps": [
+    {
+      "name": "app-name",
+      "script": "node ./node_modules/@nestjs-mod/pm2/src/lib/pm2.service.js",
+      "node_args": "-r dotenv/config"
+    }
+  ]
+}
