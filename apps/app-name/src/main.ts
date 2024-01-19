@@ -5,7 +5,6 @@ import {
   ProjectUtils,
   bootstrapNestApplication,
   isInfrastructureMode,
-  isProductionMode,
 } from '@nestjs-mod/common';
 import { NestjsPinoLogger } from '@nestjs-mod/pino';
 import { TerminusHealthCheck } from '@nestjs-mod/terminus';
@@ -73,37 +72,32 @@ bootstrapNestApplication({
       }),
     ],
     feature: [AppModule.forRoot()],
-    // Disable infrastructure modules in production
-    ...(!isProductionMode() || isInfrastructureMode()
-      ? {
-          infrastructure: [
-            InfrastructureMarkdownReportGenerator.forRoot({
-              staticConfiguration: {
-                markdownFile: join(
-                  __dirname,
-                  '..',
-                  '..',
-                  '..',
-                  'apps/app-name',
-                  'INFRASTRUCTURE.MD'
-                ),
-                skipEmptySettings: true,
-              },
-            }),
-            Pm2.forRoot({
-              configuration: {
-                ecosystemConfigFile: join(
-                  __dirname,
-                  '..',
-                  '..',
-                  '..',
-                  ECOSYSTEM_CONFIG_FILE
-                ),
-                applicationScriptFile: join('dist/apps/app-name/main.js'),
-              },
-            }),
-          ],
-        }
-      : {}),
+    infrastructure: [
+      InfrastructureMarkdownReportGenerator.forRoot({
+        staticConfiguration: {
+          markdownFile: join(
+            __dirname,
+            '..',
+            '..',
+            '..',
+            'apps/app-name',
+            'INFRASTRUCTURE.MD'
+          ),
+          skipEmptySettings: true,
+        },
+      }),
+      Pm2.forRoot({
+        configuration: {
+          ecosystemConfigFile: join(
+            __dirname,
+            '..',
+            '..',
+            '..',
+            ECOSYSTEM_CONFIG_FILE
+          ),
+          applicationScriptFile: join('dist/apps/app-name/main.js'),
+        },
+      }),
+    ],
   },
 });

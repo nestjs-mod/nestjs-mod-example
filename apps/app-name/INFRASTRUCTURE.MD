@@ -1,7 +1,7 @@
 # app-name
 
 ## System modules
-System modules necessary for the operation of the entire application (examples: launching a NestJS application, launching microservices, etc.).
+System modules necessary for the operation of the entire application (examples: launching a NestJS application, launching microservices, etc.). Only NestJS-mod compatible modules.
 
 ### ProjectUtils
 Utilities for setting global application parameters, such as project name, description, and settings validation parameters.
@@ -55,16 +55,15 @@ Static variables of primitive and complex types that are used in the module and 
 
 | Key    | Description | Constraints | Default | Value |
 | ------ | ----------- | ----------- | ------- | ----- |
-|`mode`|Mode of start application: init - for run NestJS life cycle, listen -  for full start NestJS application|**optional**|```listen```|```init```|
 |`preListen`|Method for additional actions before listening|**optional**|-|Function|
 |`postListen`|Method for additional actions after listening|**optional**|-|Function|
 
 ## Feature modules
-Feature modules with business logic of the application.
+Feature modules with business logic of the application. NestJS and NestJS-mod compatible modules.
 
 ### AppModule
 ## Infrastructure modules
-Infrastructure modules are needed to create configurations that launch various external services (examples: docker-compose file for raising a database, gitlab configuration for deploying an application).
+Infrastructure modules are needed to create configurations that launch various external services (examples: docker-compose file for raising a database, gitlab configuration for deploying an application). Only NestJS-mod compatible modules.
 
 ### Pm2
 Production process manager for Node.JS applications with a built-in load balancer for NestJS-mod (Wrapper for https://www.npmjs.com/package/pm2)
