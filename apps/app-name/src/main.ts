@@ -21,14 +21,7 @@ bootstrapNestApplication({
     system: [
       ProjectUtils.forRoot({
         staticConfiguration: {
-          applicationPackageJsonFile: join(
-            __dirname,
-            '..',
-            '..',
-            '..',
-            'apps/app-name',
-            PACKAGE_JSON_FILE
-          ),
+          applicationPackageJsonFile: join(__dirname, '..', '..', '..', 'apps/app-name', PACKAGE_JSON_FILE),
           packageJsonFile: join(__dirname, '..', '..', '..', PACKAGE_JSON_FILE),
           envFile: join(__dirname, '..', '..', '..', '.env'),
         },
@@ -36,18 +29,9 @@ bootstrapNestApplication({
       DefaultNestApplicationInitializer.forRoot(),
       NestjsPinoLogger.forRoot(),
       TerminusHealthCheck.forRootAsync({
-        configurationFactory: (
-          memoryHealthIndicator: MemoryHealthIndicator
-        ) => ({
+        configurationFactory: (memoryHealthIndicator: MemoryHealthIndicator) => ({
           standardHealthIndicator: [
-            {
-              name: 'memory_heap',
-              check: () =>
-                memoryHealthIndicator.checkHeap(
-                  'memory_heap',
-                  150 * 1024 * 1024
-                ),
-            },
+            { name: 'memory_heap', check: () => memoryHealthIndicator.checkHeap('memory_heap', 150 * 1024 * 1024) },
           ],
         }),
         inject: [MemoryHealthIndicator],
@@ -63,9 +47,9 @@ bootstrapNestApplication({
           },
           postListen: async ({ current }) => {
             Logger.log(
-              `🚀 Application is running on: http://${
-                current.staticEnvironments?.hostname ?? 'localhost'
-              }:${current.staticEnvironments?.port}/${globalPrefix}`
+              `🚀 Application is running on: http://${current.staticEnvironments?.hostname ?? 'localhost'}:${
+                current.staticEnvironments?.port
+              }/${globalPrefix}`
             );
           },
         },
@@ -75,26 +59,13 @@ bootstrapNestApplication({
     infrastructure: [
       InfrastructureMarkdownReportGenerator.forRoot({
         staticConfiguration: {
-          markdownFile: join(
-            __dirname,
-            '..',
-            '..',
-            '..',
-            'apps/app-name',
-            'INFRASTRUCTURE.MD'
-          ),
+          markdownFile: join(__dirname, '..', '..', '..', 'apps/app-name', 'INFRASTRUCTURE.MD'),
           skipEmptySettings: true,
         },
       }),
       Pm2.forRoot({
         configuration: {
-          ecosystemConfigFile: join(
-            __dirname,
-            '..',
-            '..',
-            '..',
-            ECOSYSTEM_CONFIG_FILE
-          ),
+          ecosystemConfigFile: join(__dirname, '..', '..', '..', ECOSYSTEM_CONFIG_FILE),
           applicationScriptFile: join('dist/apps/app-name/main.js'),
         },
       }),

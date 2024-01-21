@@ -38,8 +38,8 @@ testem.log
 .DS_Store
 Thumbs.db
 
-.nx/cache
 .clinic
 
 .nx/cache
 *.env
+
