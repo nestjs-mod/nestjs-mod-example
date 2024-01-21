@@ -7,7 +7,7 @@ System modules necessary for the operation of the entire application (examples: 
 Utilities for setting global application parameters, such as project name, description, and settings validation parameters.
 
 #### Shared providers
-`WrapApplicationOptionsService`, `DotEnvService`, `PackageJsonService`, `ApplicationPackageJsonService`, `GitignoreService`, `ProjectUtilsPatcherService`
+`WrapApplicationOptionsService`, `DotEnvService`, `PackageJsonService`, `ApplicationPackageJsonService`, `GitignoreService`, `NxProjectJsonService`, `ProjectUtilsPatcherService`
 
 #### Static configuration
 Static variables of primitive and complex types that are used in the module and can be used at the time of generating module metadata (import, controllers); values for them must be passed when connecting the module to the application.
@@ -15,8 +15,8 @@ Static variables of primitive and complex types that are used in the module and 
 | Key    | Description | Constraints | Default | Value |
 | ------ | ----------- | ----------- | ------- | ----- |
 |`applicationPackageJsonFile`|Application package.json-file|**optional**|-|```/home/endy/Projects/nestjs-mod/nestjs-mod/integrations/nestjs-mod-example/apps/app-name/package.json```|
-|`packageJsonFile`|Root package.json-file.|**optional**|-|```/home/endy/Projects/nestjs-mod/nestjs-mod/integrations/nestjs-mod-example/package.json```|
-|`envFile`|Dot-env file with environment variables.|**optional**|-|```/home/endy/Projects/nestjs-mod/nestjs-mod/integrations/nestjs-mod-example/.env```|
+|`packageJsonFile`|Root package.json-file|**optional**|-|```/home/endy/Projects/nestjs-mod/nestjs-mod/integrations/nestjs-mod-example/package.json```|
+|`envFile`|Dot-env file with environment variables|**optional**|-|```/home/endy/Projects/nestjs-mod/nestjs-mod/integrations/nestjs-mod-example/.env```|
 
 ### DefaultNestApplicationInitializer
 Default NestJS application initializer, no third party utilities required.
@@ -69,7 +69,7 @@ Static variables of primitive and complex types that are used in the module and 
 Infrastructure modules are needed to create configurations that launch various external services (examples: docker-compose file for raising a database, gitlab configuration for deploying an application). Only NestJS-mod compatible modules.
 
 ### Pm2
-Production process manager for Node.JS applications with a built-in load balancer for NestJS-mod (Wrapper for https://www.npmjs.com/package/pm2)
+Production process manager for Node.JS applications with a built-in load balancer for NestJS-mod (Generator ecosystem.config.json for https://www.npmjs.com/package/pm2)
 
 #### Configuration
 Variables of primitive and complex types that are used in the module; values for them must be passed when connecting the module to the application.
