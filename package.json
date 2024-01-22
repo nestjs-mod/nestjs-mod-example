@@ -5,7 +5,7 @@
   "scripts": {
     "_____prod infra_____": "_____prod infra_____",
     "start": "npm run nx:many -- -t=start",
-    "build": "npm run tsc:lint && npm run nx:many -- -t=build --skip-nx-cache=true",
+    "build": "npm run generate && npm run tsc:lint && npm run nx:many -- -t=build --skip-nx-cache=true",
     "start:prod:app-name": "npm run nx -- start app-name --host=0.0.0.0",
     "build:prod:app-name": "npm run nx -- build app-name",
     "_____docs_____": "_____docs_____",
@@ -35,8 +35,8 @@
   "devDependencies": {
     "@commitlint/cli": "^17.0.0",
     "@commitlint/config-conventional": "^17.0.0",
-    "@nestjs-mod/schematics": "^2.0.4",
-    "@nestjs-mod/testing": "2.4.0",
+    "@nestjs-mod/schematics": "^2.0.7",
+    "@nestjs-mod/testing": "2.4.1",
     "@nestjs/schematics": "^10.0.1",
     "@nestjs/testing": "^10.0.2",
     "@nx/jest": "17.2.8",
@@ -69,10 +69,10 @@
     "*.{js,ts}": "eslint --fix"
   },
   "dependencies": {
-    "@nestjs-mod/common": "2.4.0",
+    "@nestjs-mod/common": "2.4.1",
     "@nestjs-mod/pino": "1.5.0",
     "@nestjs-mod/pm2": "1.3.0",
-    "@nestjs-mod/reports": "2.4.0",
+    "@nestjs-mod/reports": "2.4.1",
     "@nestjs-mod/terminus": "1.4.0",
     "@nestjs/common": "^10.0.2",
     "@nestjs/core": "^10.0.2",
