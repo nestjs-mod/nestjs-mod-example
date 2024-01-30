@@ -6,6 +6,7 @@
 # running the "generate" nx command in applications and libraries which can be customized at your discretion automatically generating an index.ts file for each library checking the code and trying to fix it
 npm run generate
 
+# running app-name source code in watch mode
 npm run serve:dev:app-name
 ```
 ## Running the app in production mode
@@ -24,23 +25,26 @@ npm run test:app-name
 ## All scripts
 |Script|Description|
 |---|---|
+|**dev infra**|
+|`npm run serve:dev`|Running NestJS application source code in watch mode|
+|`npm run serve:dev:app-name`|Running app-name source code in watch mode|
 |**prod infra**|
 |`npm run start`|Launching a built NestJS application (you must first build it using the build command)|
 |`npm run build`|Building a NestJS application|
+|`npm run start:prod:app-name`|Launching a built app-name (you must first build it using the build command)|
+|**pm2 prod infra**|
+|`npm run pm2:start`|Launch all applications in PM2 mode|
+|`npm run pm2:stop`|Stop all applications in PM2 mode|
 |**docs**|
 |`npm run docs:infrastructure`|Creation of documentation for the entire infrastructure and creation of files necessary to launch the infrastructure|
-|**dev infra**|
-|`npm run serve:dev`|Running NestJS application source code in watch mode|
+|**tests**|
+|`npm run test`|Running tests across the entire project|
+|`npm run test:app-name`|Running tests for app-name|
 |**lint**|
 |`npm run lint`|Checking the typescript code for the entire project|
 |`npm run lint:fix`|Checking the typescript code throughout the project and trying to fix everything possible|
 |`npm run tsc:lint`|Checking typescript code in libraries|
-|**tests**|
-|`npm run test`|Running tests across the entire project|
 |**utils**|
-|`npm run start:prod:app-name`|Launching a built app-name (you must first build it using the build command)|
-|`npm run start:dev:app-name`|Running app-name source code in watch mode|
-|`npm run test:app-name`|Running tests for app-name|
 |`npm run generate`|Running the "generate" nx command in applications and libraries which can be customized at your discretion automatically generating an index.ts file for each library checking the code and trying to fix it|
 |`npm run tsc`|Alias for running the tsc version locally, which is in the project (example: `npm run tsc -- --noEmit -p tsconfig.base.json`), in order not to install tsc globally in the operating system|
 |`npm run nx`|Alias for running the nx version locally, which is in the project (example: `npm run nx -- dep-graph`), in order not to install nx globally in the operating system|
@@ -49,9 +53,6 @@ npm run test:app-name
 |`npm run make-ts-list`|Automatically generating an index.ts file for each library, works only for nx applications created using the `--projectNameAndRootFormat=as-provided` flag|
 |`npm run manual:prepare`|Preparing code, building code, creating infrastructure documentation and all the files necessary to raise the infrastructure and running tests (generate, build, docs:infrastructure, test)|
 |`npm run rucken`|Alias for console tools and scripts for nx and not only use to automate the workflow and speed up the development process (example: `npm run rucken -- make-ts-list`, site: https://www.npmjs.com/package/rucken)|
-|**pm2 prod infra**|
-|`npm run pm2:start`|Launch all applications in PM2 mode|
-|`npm run pm2:stop`|Stop all applications in PM2 mode|
 ## System modules
 System modules necessary for the operation of the entire application (examples: launching a NestJS application, launching microservices, etc.). Only NestJS-mod compatible modules.
 
