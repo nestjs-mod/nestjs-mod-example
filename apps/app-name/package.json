@@ -4,5 +4,16 @@
   "dependencies": {
     "pm2": ">=5.3.0",
     "dotenv": ">=16.3.1"
-  }
+  },
+  "devScripts": [
+    "generate",
+    "serve:dev:app-name"
+  ],
+  "prodScripts": [
+    "manual:prepare",
+    "start:prod:app-name"
+  ],
+  "testsScripts": [
+    "test:app-name"
+  ]
 }

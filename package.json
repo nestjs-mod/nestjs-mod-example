@@ -6,26 +6,28 @@
     "_____prod infra_____": "_____prod infra_____",
     "start": "npm run nx:many -- -t=start",
     "build": "npm run generate && npm run tsc:lint && npm run nx:many -- -t=build --skip-nx-cache=true",
-    "start:prod:app-name": "npm run nx -- start app-name --host=0.0.0.0",
-    "build:prod:app-name": "npm run nx -- build app-name",
     "_____docs_____": "_____docs_____",
     "docs:infrastructure": "export NODE_ENV=infrastructure && npm run nx:many -- -t=start --parallel=1",
     "_____dev infra_____": "_____dev infra_____",
-    "serve:dev": "npm run nx:many -- -t=serve --host=0.0.0.0",
-    "serve:dev:app-name": "npm run nx -- serve app-name --host=0.0.0.0",
+    "serve:dev": "npm run nx:many -- -t=serve",
     "_____lint_____": "_____lint_____",
     "lint": "npm run tsc:lint && npm run nx:many -- -t=lint",
     "lint:fix": "npm run tsc:lint && npm run nx:many -- -t=lint --fix",
-    "tsc:lint": "tsc --noEmit -p tsconfig.base.json",
+    "tsc:lint": "npm run tsc -- --noEmit -p tsconfig.base.json",
     "_____tests_____": "_____tests_____",
     "test": "npm run nx:many -- -t=test --skip-nx-cache=true --passWithNoTests --output-style=stream-without-prefixes",
     "_____utils_____": "_____utils_____",
+    "start:prod:app-name": "npm run nx -- start app-name",
+    "start:dev:app-name": "npm run nx -- serve app-name --host=0.0.0.0",
+    "test:app-name": "npm run nx -- test app-name --skip-nx-cache=true --passWithNoTests --output-style=stream-without-prefixes",
     "generate": "npm run nx:many -- -t=generate --skip-nx-cache=true && npm run make-ts-list && npm run lint:fix",
+    "tsc": "tsc",
     "nx": "nx",
     "dep-graph": "npm run nx -- dep-graph",
     "nx:many": "npm run nx -- run-many --exclude=@project-name/source --all",
     "make-ts-list": "./node_modules/.bin/rucken make-ts-list",
     "manual:prepare": "npm run generate && npm run build && npm run docs:infrastructure && npm run test",
+    "rucken": "rucken",
     "_____pm2 prod infra_____": "_____pm2 prod infra_____",
     "pm2:start": "./node_modules/.bin/pm2 start ./ecosystem.config.json",
     "pm2:stop": "./node_modules/.bin/pm2 delete all"
@@ -34,8 +36,8 @@
   "devDependencies": {
     "@commitlint/cli": "^17.0.0",
     "@commitlint/config-conventional": "^17.0.0",
-    "@nestjs-mod/schematics": "^2.1.8",
-    "@nestjs-mod/testing": "2.5.3",
+    "@nestjs-mod/schematics": "^2.2.3",
+    "@nestjs-mod/testing": "2.6.0",
     "@nestjs/schematics": "^10.0.1",
     "@nestjs/testing": "^10.0.2",
     "@nx/jest": "17.2.8",
@@ -67,12 +69,86 @@
   "lint-staged": {
     "*.{js,ts}": "eslint --fix"
   },
+  "scriptsComments": {
+    "start": [
+      "Launching a built NestJS application (you must first build it using the build command)"
+    ],
+    "build": [
+      "Building a NestJS application"
+    ],
+    "docs:infrastructure": [
+      "Creation of documentation for the entire infrastructure and creation of files necessary to launch the infrastructure"
+    ],
+    "serve:dev": [
+      "Running NestJS application source code in watch mode"
+    ],
+    "lint": [
+      "Checking the typescript code for the entire project"
+    ],
+    "lint:fix": [
+      "Checking the typescript code throughout the project and trying to fix everything possible"
+    ],
+    "tsc:lint": [
+      "Checking typescript code in libraries"
+    ],
+    "test": [
+      "Running tests across the entire project"
+    ],
+    "generate": [
+      "Running the \"generate\" nx command in applications and libraries which can be customized at your discretion",
+      "automatically generating an index.ts file for each library",
+      "checking the code and trying to fix it"
+    ],
+    "tsc": [
+      "Alias for running the tsc version locally, which is in the project (example: `npm run tsc -- --noEmit -p tsconfig.base.json`),",
+      "in order not to install tsc globally in the operating system"
+    ],
+    "nx": [
+      "Alias for running the nx version locally, which is in the project (example: `npm run nx -- dep-graph`),",
+      "in order not to install nx globally in the operating system"
+    ],
+    "dep-graph": [
+      "Generating dependency diagrams for nx applications and libraries"
+    ],
+    "nx:many": [
+      "Alias for running many nx commands (example: `npm run nx:many -- -t=lint`),",
+      "an exception has been added for the root project,",
+      "since sometimes an attempt to run an nx command on it can lead to the command freezing"
+    ],
+    "make-ts-list": [
+      "Automatically generating an index.ts file for each library,",
+      "works only for nx applications created using the `--projectNameAndRootFormat=as-provided` flag"
+    ],
+    "manual:prepare": [
+      "Preparing code, building code, creating infrastructure documentation",
+      "and all the files necessary to raise the infrastructure and running tests (generate, build, docs:infrastructure, test)"
+    ],
+    "rucken": [
+      "Alias for console tools and scripts for nx and not only use to automate the workflow and",
+      "speed up the development process (example: `npm run rucken -- make-ts-list`, site: https://www.npmjs.com/package/rucken)"
+    ],
+    "start:prod:app-name": [
+      "Launching a built app-name (you must first build it using the build command)"
+    ],
+    "start:dev:app-name": [
+      "Running app-name source code in watch mode"
+    ],
+    "test:app-name": [
+      "Running tests for app-name"
+    ],
+    "pm2:start": [
+      "Launch all applications in PM2 mode"
+    ],
+    "pm2:stop": [
+      "Stop all applications in PM2 mode"
+    ]
+  },
   "dependencies": {
-    "@nestjs-mod/common": "2.5.3",
-    "@nestjs-mod/pino": "1.6.2",
-    "@nestjs-mod/pm2": "1.4.2",
-    "@nestjs-mod/reports": "2.5.3",
-    "@nestjs-mod/terminus": "1.5.2",
+    "@nestjs-mod/common": "2.6.0",
+    "@nestjs-mod/pino": "1.7.0",
+    "@nestjs-mod/pm2": "1.5.0",
+    "@nestjs-mod/reports": "2.6.0",
+    "@nestjs-mod/terminus": "1.6.0",
     "@nestjs/common": "^10.0.2",
     "@nestjs/core": "^10.0.2",
     "@nestjs/platform-express": "^10.0.2",

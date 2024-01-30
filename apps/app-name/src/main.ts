@@ -2,6 +2,7 @@ import {
   DefaultNestApplicationInitializer,
   DefaultNestApplicationListener,
   InfrastructureMarkdownReportGenerator,
+  PACKAGE_JSON_FILE,
   ProjectUtils,
   bootstrapNestApplication,
   isInfrastructureMode,
@@ -9,7 +10,7 @@ import {
 import { NestjsPinoLogger } from '@nestjs-mod/pino';
 import { TerminusHealthCheck } from '@nestjs-mod/terminus';
 import { MemoryHealthIndicator } from '@nestjs/terminus';
-import { ECOSYSTEM_CONFIG_FILE, PACKAGE_JSON_FILE, Pm2 } from '@nestjs-mod/pm2';
+import { ECOSYSTEM_CONFIG_FILE, Pm2 } from '@nestjs-mod/pm2';
 import { Logger } from '@nestjs/common';
 import { join } from 'path';
 import { AppModule } from './app/app.module';
@@ -39,7 +40,7 @@ bootstrapNestApplication({
         configurationFactory: (
           memoryHealthIndicator: MemoryHealthIndicator
         ) => ({
-          standardHealthIndicator: [
+          standardHealthIndicators: [
             {
               name: 'memory_heap',
               check: () =>
