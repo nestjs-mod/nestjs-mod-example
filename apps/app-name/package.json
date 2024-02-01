@@ -15,6 +15,5 @@
   ],
   "testsScripts": [
     "test:app-name"
-  ],
-  "scriptsComments": {}
+  ]
 }

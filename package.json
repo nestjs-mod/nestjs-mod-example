@@ -36,8 +36,8 @@
   "devDependencies": {
     "@commitlint/cli": "^17.0.0",
     "@commitlint/config-conventional": "^17.0.0",
-    "@nestjs-mod/schematics": "^2.2.5",
-    "@nestjs-mod/testing": "2.6.1",
+    "@nestjs-mod/schematics": "^2.2.9",
+    "@nestjs-mod/testing": "2.6.2",
     "@nestjs/schematics": "^10.0.1",
     "@nestjs/testing": "^10.0.2",
     "@nx/jest": "17.2.8",
@@ -144,11 +144,11 @@
     ]
   },
   "dependencies": {
-    "@nestjs-mod/common": "2.6.1",
-    "@nestjs-mod/pino": "1.7.1",
-    "@nestjs-mod/pm2": "1.5.1",
-    "@nestjs-mod/reports": "2.6.1",
-    "@nestjs-mod/terminus": "1.6.1",
+    "@nestjs-mod/common": "2.6.2",
+    "@nestjs-mod/pino": "1.8.1",
+    "@nestjs-mod/pm2": "1.6.2",
+    "@nestjs-mod/reports": "2.6.2",
+    "@nestjs-mod/terminus": "1.7.1",
     "@nestjs/common": "^10.0.2",
     "@nestjs/core": "^10.0.2",
     "@nestjs/platform-express": "^10.0.2",
