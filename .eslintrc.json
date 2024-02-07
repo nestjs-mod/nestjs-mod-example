@@ -18,7 +18,11 @@
               }
             ]
           }
-        ]
+        ],
+        "@typescript-eslint/await-thenable": "error"
+      },
+      "parserOptions": {
+        "project": ["tsconfig.*?.json"]
       }
     },
     {
