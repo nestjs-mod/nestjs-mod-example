@@ -74,6 +74,13 @@ Static variables of primitive and complex types that are used in the module and 
 ### DefaultNestApplicationInitializer
 Default NestJS application initializer, no third party utilities required.
 
+#### Static configuration
+Static variables of primitive and complex types that are used in the module and can be used at the time of generating module metadata (import, controllers); values for them must be passed when connecting the module to the application.
+
+| Key    | Description | Constraints | Default | Value |
+| ------ | ----------- | ----------- | ------- | ----- |
+|`bufferLogs`|If enabled, logs will be buffered until the "Logger#flush" method is called. @default false|**optional**|-|```true```|
+
 ### NestjsPinoLoggerModule
 Pino logger for NestJS-mod (Wrapper for https://www.npmjs.com/package/nestjs-pino)
 

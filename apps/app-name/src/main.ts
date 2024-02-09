@@ -14,24 +14,22 @@ import { ECOSYSTEM_CONFIG_FILE, Pm2 } from '@nestjs-mod/pm2';
 import { join } from 'path';
 import { AppModule } from './app/app.module';
 
+const rootFolder = join(__dirname, '..', '..', '..');
+const appFolder = join(rootFolder, 'apps', 'app-name');
+
 bootstrapNestApplication({
   modules: {
     system: [
       ProjectUtils.forRoot({
         staticConfiguration: {
-          applicationPackageJsonFile: join(
-            __dirname,
-            '..',
-            '..',
-            '..',
-            'apps/app-name',
-            PACKAGE_JSON_FILE
-          ),
-          packageJsonFile: join(__dirname, '..', '..', '..', PACKAGE_JSON_FILE),
-          envFile: join(__dirname, '..', '..', '..', '.env'),
+          applicationPackageJsonFile: join(appFolder, PACKAGE_JSON_FILE),
+          packageJsonFile: join(rootFolder, PACKAGE_JSON_FILE),
+          envFile: join(rootFolder, '.env'),
         },
       }),
-      DefaultNestApplicationInitializer.forRoot(),
+      DefaultNestApplicationInitializer.forRoot({
+        staticConfiguration: { bufferLogs: true },
+      }),
       NestjsPinoLoggerModule.forRoot(),
       TerminusHealthCheckModule.forRootAsync({
         configurationFactory: (
@@ -61,26 +59,13 @@ bootstrapNestApplication({
     infrastructure: [
       InfrastructureMarkdownReportGenerator.forRoot({
         staticConfiguration: {
-          markdownFile: join(
-            __dirname,
-            '..',
-            '..',
-            '..',
-            'apps/app-name',
-            'INFRASTRUCTURE.MD'
-          ),
+          markdownFile: join(appFolder, 'INFRASTRUCTURE.MD'),
           skipEmptySettings: true,
         },
       }),
       Pm2.forRoot({
         configuration: {
-          ecosystemConfigFile: join(
-            __dirname,
-            '..',
-            '..',
-            '..',
-            ECOSYSTEM_CONFIG_FILE
-          ),
+          ecosystemConfigFile: join(rootFolder, ECOSYSTEM_CONFIG_FILE),
           applicationScriptFile: join('dist/apps/app-name/main.js'),
         },
       }),
