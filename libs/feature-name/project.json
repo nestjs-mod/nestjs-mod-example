@@ -3,6 +3,15 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/feature-name/src",
   "projectType": "library",
+  "release": {
+    "version": {
+      "generatorOptions": {
+        "packageRoot": "dist/{projectRoot}",
+        "currentVersionResolver": "git-tag"
+      }
+    }
+  },
+  "tags": [],
   "targets": {
     "build": {
       "executor": "@nx/js:tsc",
@@ -15,9 +24,10 @@
         "assets": ["libs/feature-name/*.md"]
       }
     },
-    "publish": {
-      "command": "node tools/scripts/publish.mjs feature-name {args.ver} {args.tag}",
-      "dependsOn": ["build"]
+    "nx-release-publish": {
+      "options": {
+        "packageRoot": "dist/{projectRoot}"
+      }
     },
     "lint": {
       "executor": "@nx/eslint:lint"
@@ -36,6 +46,5 @@
         "outputPath": "dist/libs/feature-name"
       }
     }
-  },
-  "tags": []
+  }
 }

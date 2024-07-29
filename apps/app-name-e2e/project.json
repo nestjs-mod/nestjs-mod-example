@@ -1,8 +1,8 @@
 {
   "name": "app-name-e2e",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "implicitDependencies": ["app-name"],
   "projectType": "application",
+  "implicitDependencies": ["app-name"],
   "targets": {
     "e2e": {
       "executor": "@nx/jest:jest",
@@ -10,11 +10,11 @@
       "options": {
         "jestConfig": "apps/app-name-e2e/jest.config.ts",
         "passWithNoTests": true
-      }
+      },
+      "dependsOn": ["app-name:build"]
     },
     "lint": {
-      "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"]
+      "executor": "@nx/eslint:lint"
     }
   }
 }
