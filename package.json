@@ -10,8 +10,11 @@
     "start": "./node_modules/.bin/nx run-many --exclude=@project-name/source --all -t=start",
     "build": "npm run generate && npm run tsc:lint && ./node_modules/.bin/nx run-many --exclude=@project-name/source --all -t=build --skip-nx-cache=true",
     "start:prod:app-name": "./node_modules/.bin/nx start app-name",
+    "_____pm2 prod infra_____": "_____pm2 prod infra_____",
+    "pm2:start": "./node_modules/.bin/pm2 start ./ecosystem.config.json",
+    "pm2:stop": "./node_modules/.bin/pm2 delete all",
     "_____docs_____": "_____docs_____",
-    "docs:infrastructure": "export NESTJS_MODE=infrastructure && ./node_modules/.bin/nx run-many --exclude=@project-name/source --all -t=start --parallel=1",
+    "docs:infrastructure": "export NESTJS_MODE=infrastructure && ./node_modules/.bin/nx run-many --exclude=@project-name/source --all -t=serve --parallel=1 -- --watch=false --inspect=false",
     "_____tests_____": "_____tests_____",
     "test": "./node_modules/.bin/nx run-many --exclude=@project-name/source --all -t=test --skip-nx-cache=true --passWithNoTests --output-style=stream-without-prefixes",
     "test:app-name": "./node_modules/.bin/nx test app-name --skip-nx-cache=true --passWithNoTests --output-style=stream-without-prefixes",
@@ -25,19 +28,16 @@
     "nx": "nx",
     "dep-graph": "./node_modules/.bin/nx dep-graph",
     "make-ts-list": "./node_modules/.bin/rucken make-ts-list",
-    "manual:prepare": "npm run generate && npm run build && npm run docs:infrastructure && npm run test",
+    "manual:prepare": "npm run generate && npm run docs:infrastructure && npm run test",
     "update:nestjs-mod-versions": "npx -y npm-check-updates @nestjs-mod/* nestjs-mod -u",
-    "rucken": "rucken",
-    "_____pm2 prod infra_____": "_____pm2 prod infra_____",
-    "pm2:start": "./node_modules/.bin/pm2 start ./ecosystem.config.json",
-    "pm2:stop": "./node_modules/.bin/pm2 delete all"
+    "rucken": "rucken"
   },
   "private": true,
   "devDependencies": {
     "@commitlint/cli": "^17.0.0",
     "@commitlint/config-conventional": "^17.0.0",
-    "@nestjs-mod/schematics": "^2.9.2",
-    "@nestjs-mod/testing": "2.14.0",
+    "@nestjs-mod/schematics": "^2.9.5",
+    "@nestjs-mod/testing": "2.14.2",
     "@nestjs/schematics": "^10.0.1",
     "@nestjs/testing": "^10.0.2",
     "@nx/jest": "19.5.3",
@@ -82,6 +82,12 @@
     ],
     "start:prod:app-name": [
       "Launching a built app-name (you must first build it using the build command)"
+    ],
+    "pm2:start": [
+      "Launch all applications in PM2 mode"
+    ],
+    "pm2:stop": [
+      "Stop all applications in PM2 mode"
     ],
     "docs:infrastructure": [
       "Creation of documentation for the entire infrastructure and creation of files necessary to launch the infrastructure"
@@ -131,20 +137,14 @@
     "rucken": [
       "Alias for console tools and scripts for nx and not only use to automate the workflow and",
       "speed up the development process (example: `npm run rucken -- make-ts-list`, site: https://www.npmjs.com/package/rucken)"
-    ],
-    "pm2:start": [
-      "Launch all applications in PM2 mode"
-    ],
-    "pm2:stop": [
-      "Stop all applications in PM2 mode"
     ]
   },
   "dependencies": {
-    "@nestjs-mod/common": "2.14.0",
-    "@nestjs-mod/pino": "1.14.0",
-    "@nestjs-mod/pm2": "1.12.0",
-    "@nestjs-mod/reports": "2.14.0",
-    "@nestjs-mod/terminus": "1.13.0",
+    "@nestjs-mod/common": "2.14.2",
+    "@nestjs-mod/pino": "1.14.2",
+    "@nestjs-mod/pm2": "1.12.2",
+    "@nestjs-mod/reports": "2.14.2",
+    "@nestjs-mod/terminus": "1.13.2",
     "@nestjs/common": "^10.0.2",
     "@nestjs/core": "^10.0.2",
     "@nestjs/platform-express": "^10.0.2",
