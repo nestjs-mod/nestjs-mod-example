@@ -16,7 +16,8 @@
         "main": "apps/app-name/src/main.ts",
         "tsConfig": "apps/app-name/tsconfig.app.json",
         "assets": ["apps/app-name/src/assets"],
-        "webpackConfig": "apps/app-name/webpack.config.js"
+        "webpackConfig": "apps/app-name/webpack.config.js",
+        "generatePackageJson": true
       },
       "configurations": {
         "development": {},
@@ -26,8 +27,10 @@
     "serve": {
       "executor": "@nx/js:node",
       "defaultConfiguration": "development",
+      "dependsOn": ["build"],
       "options": {
-        "buildTarget": "app-name:build"
+        "buildTarget": "app-name:build",
+        "runBuildTargetDependencies": false
       },
       "configurations": {
         "development": {
