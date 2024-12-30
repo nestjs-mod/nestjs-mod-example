@@ -27,23 +27,12 @@ bootstrapNestApplication({
           envFile: join(rootFolder, '.env'),
         },
       }),
-      DefaultNestApplicationInitializer.forRoot({
-        staticConfiguration: { bufferLogs: true },
-      }),
+      DefaultNestApplicationInitializer.forRoot({ staticConfiguration: { bufferLogs: true } }),
       NestjsPinoLoggerModule.forRoot(),
       TerminusHealthCheckModule.forRootAsync({
-        configurationFactory: (
-          memoryHealthIndicator: MemoryHealthIndicator
-        ) => ({
+        configurationFactory: (memoryHealthIndicator: MemoryHealthIndicator) => ({
           standardHealthIndicators: [
-            {
-              name: 'memory_heap',
-              check: () =>
-                memoryHealthIndicator.checkHeap(
-                  'memory_heap',
-                  150 * 1024 * 1024
-                ),
-            },
+            { name: 'memory_heap', check: () => memoryHealthIndicator.checkHeap('memory_heap', 150 * 1024 * 1024) },
           ],
         }),
         inject: [MemoryHealthIndicator],
@@ -66,7 +55,7 @@ bootstrapNestApplication({
       Pm2.forRoot({
         configuration: {
           ecosystemConfigFile: join(rootFolder, ECOSYSTEM_CONFIG_FILE),
-          applicationScriptFile: join('dist/apps/app-name/main.js'),
+          applicationScriptFile: join('undefined/main.js'),
         },
       }),
     ],

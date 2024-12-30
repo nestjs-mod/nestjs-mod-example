@@ -49,7 +49,7 @@ npm run test:app-name
 |`npm run tsc`|Alias for running the tsc version locally, which is in the project (example: `npm run tsc -- --noEmit -p tsconfig.base.json`), in order not to install tsc globally in the operating system|
 |`npm run nx`|Alias for running the nx version locally, which is in the project (example: `./node_modules/.bin/nx dep-graph`), in order not to install nx globally in the operating system|
 |`npm run dep-graph`|Generating dependency diagrams for nx applications and libraries|
-|`npm run make-ts-list`|Automatically generating an index.ts file for each library, works only for nx applications created using the `--projectNameAndRootFormat=as-provided` flag|
+|`npm run make-ts-list`|Automatically generating an index.ts file for each library,|
 |`npm run manual:prepare`|Preparing code, building code, creating infrastructure documentation and all the files necessary to raise the infrastructure and running tests (generate, build, docs:infrastructure, test)|
 |`npm run update:nestjs-mod-versions`|Updating NestJS-mod libraries|
 |`npm run rucken`|Alias for console tools and scripts for nx and not only use to automate the workflow and speed up the development process (example: `npm run rucken -- make-ts-list`, site: https://www.npmjs.com/package/rucken)|
@@ -115,7 +115,7 @@ Static variables with primitive types used in the module and can be used at the 
 
 | Key    | Description | Sources | Constraints | Default | Value |
 | ------ | ----------- | ------- | ----------- | ------- | ----- |
-|`port`|The port on which to run the server.|`obj['port']`, `process.env['APP_NAME_PORT']`|**optional**|```3000```|```3000```|
+|`port`|The port on which to run the server.|`obj['port']`, `process.env['APP_NAME_PORT']`|**optional**|```3000```|```36365```|
 |`hostname`|Hostname on which to listen for incoming packets.|`obj['hostname']`, `process.env['APP_NAME_HOSTNAME']`|**optional**|-|-|
 
 #### Static configuration
@@ -137,7 +137,7 @@ Variables of primitive and complex types that are used in the module; values for
 | Key    | Description | Constraints | Default | Value |
 | ------ | ----------- | ----------- | ------- | ----- |
 |`ecosystemConfigFile`|Configuration file for PM2|**isNotEmpty** (ecosystemConfigFile should not be empty)|-|```/home/endy/Projects/nestjs-mod/nestjs-mod/integrations/nestjs-mod-example/ecosystem.config.json```|
-|`applicationScriptFile`|Application script file name for run|**isNotEmpty** (applicationScriptFile should not be empty)|-|```dist/apps/app-name/main.js```|
+|`applicationScriptFile`|Application script file name for run|**isNotEmpty** (applicationScriptFile should not be empty)|-|```undefined/main.js```|
 
 ### InfrastructureMarkdownReportGenerator
 Infrastructure markdown report generator.

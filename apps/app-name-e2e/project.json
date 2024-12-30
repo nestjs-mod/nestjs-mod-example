@@ -12,9 +12,6 @@
         "passWithNoTests": true
       },
       "dependsOn": ["app-name:build"]
-    },
-    "lint": {
-      "executor": "@nx/eslint:lint"
     }
   }
 }

@@ -2,7 +2,7 @@
   "apps": [
     {
       "name": "app-name",
-      "script": "node ./dist/apps/app-name/main.js",
+      "script": "node ./undefined/main.js",
       "node_args": "-r dotenv/config"
     }
   ]
