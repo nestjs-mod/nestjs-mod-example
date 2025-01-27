@@ -115,7 +115,7 @@ Static variables with primitive types used in the module and can be used at the 
 
 | Key    | Description | Sources | Constraints | Default | Value |
 | ------ | ----------- | ------- | ----------- | ------- | ----- |
-|`port`|The port on which to run the server.|`obj['port']`, `process.env['APP_NAME_PORT']`|**optional**|```3000```|```36365```|
+|`port`|The port on which to run the server.|`obj['port']`, `process.env['APP_NAME_PORT']`|**optional**|```3000```|```3000```|
 |`hostname`|Hostname on which to listen for incoming packets.|`obj['hostname']`, `process.env['APP_NAME_HOSTNAME']`|**optional**|-|-|
 
 #### Static configuration
