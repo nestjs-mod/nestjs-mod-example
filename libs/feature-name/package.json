@@ -2,8 +2,7 @@
   "name": "@project-name/feature-name",
   "version": "0.0.1",
   "dependencies": {
-    "tslib": "^2.3.0",
-    "@nestjs-mod/common": "2.17.4"
+    "tslib": "^2.3.0"
   },
   "type": "commonjs",
   "main": "./src/index.js",
