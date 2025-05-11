@@ -42,7 +42,7 @@
     "start": {
       "executor": "nx:run-commands",
       "options": {
-        "commands": ["node undefined/main.js"],
+        "commands": ["node dist/apps/app-name/main.js"],
         "parallel": false
       }
     }

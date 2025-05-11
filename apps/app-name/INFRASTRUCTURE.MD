@@ -137,7 +137,7 @@ Variables of primitive and complex types that are used in the module; values for
 | Key    | Description | Constraints | Default | Value |
 | ------ | ----------- | ----------- | ------- | ----- |
 |`ecosystemConfigFile`|Configuration file for PM2|**isNotEmpty** (ecosystemConfigFile should not be empty)|-|```/home/endy/Projects/nestjs-mod/nestjs-mod/integrations/nestjs-mod-example/ecosystem.config.json```|
-|`applicationScriptFile`|Application script file name for run|**isNotEmpty** (applicationScriptFile should not be empty)|-|```undefined/main.js```|
+|`applicationScriptFile`|Application script file name for run|**isNotEmpty** (applicationScriptFile should not be empty)|-|```dist/apps/app-name/main.js```|
 
 ### InfrastructureMarkdownReportGenerator
 Infrastructure markdown report generator.

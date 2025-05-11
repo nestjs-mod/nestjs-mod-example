@@ -66,7 +66,7 @@ bootstrapNestApplication({
       Pm2.forRoot({
         configuration: {
           ecosystemConfigFile: join(rootFolder, ECOSYSTEM_CONFIG_FILE),
-          applicationScriptFile: join('undefined/main.js'),
+          applicationScriptFile: join('dist/apps/app-name/main.js'),
         },
       }),
     ],
