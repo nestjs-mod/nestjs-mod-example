@@ -2,7 +2,7 @@
   "apps": [
     {
       "name": "app-name",
-      "script": "node ./dist/apps/app-name/main.js",
+      "script": "./node_modules/.bin/nx serve app-name --skip-nx-cache=true",
       "node_args": "-r dotenv/config"
     }
   ]
