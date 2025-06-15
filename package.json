@@ -20,7 +20,7 @@
     "test:app-name": "./node_modules/.bin/nx test app-name --parallel=false --passWithNoTests --output-style=stream-without-prefixes",
     "_____lint_____": "_____lint_____",
     "lint": "npm run tsc:lint && ./node_modules/.bin/nx run-many --all -t=lint --parallel=false",
-    "lint:fix": "npm run tsc:lint && ./node_modules/.bin/nx run-many --all -t=lint --fix --parallel=false",
+    "lint:fix": "npm run tsc:lint && ./node_modules/.bin/nx run-many --all -t=lint --fix --parallel=false && ./node_modules/.bin/nx format:write --all",
     "tsc:lint": "./node_modules/.bin/tsc --noEmit -p tsconfig.base.json",
     "_____utils_____": "_____utils_____",
     "generate": "./node_modules/.bin/nx run-many --all -t=generate --parallel=false && npm run make-ts-list",
